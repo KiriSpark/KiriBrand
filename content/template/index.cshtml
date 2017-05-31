@@ -1,2 +1,91 @@
+<link rel="stylesheet" href="static/css/lib/markdown.css">
+<link rel="stylesheet" href="static/css/lib/markdown_extra.css">
+<link rel="stylesheet" href="static/css/home.css">
+<link rel="stylesheet" href="static/css/custom/cust_home.css">
+<link rel="stylesheet" href="static/css/custom/timeline.css">
+<style>
+    /*Preloader gif animation css
+    This only works with JavaScript, 
+    if it's not present, don't show loader */
 
-Hello world from body
+    .no-js #loader {
+        display: none;
+    }
+
+    .js #loader {
+        display: block;
+        position: absolute;
+        left: 100px;
+        top: 0;
+    }
+
+    .se-pre-con {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        background: url(@Model.Home.GlobalLoaderPicture) center no-repeat #fff;
+    }
+
+    body {
+        background-image:url(@Model.Home.GlobalBackgroundPicture);
+    }
+
+    #title_picture {
+        background-image:url(@Model.Home.TitlePicture);
+    }
+}
+</style>
+
+<!-- placeholder for custom loader before page load -->
+<div class="se-pre-con"></div>
+
+<!--title and menus area -->
+<header>
+    <section>
+        <div class="container-fluid">
+            <div id="title_header" class="row no-gutters">
+                <div id="title_picture" class="col-sm-4 no-gutters"></div>
+                <div class="col-sm-8 no-gutters">
+                    <div class="row no-gutters">
+                        <div class="col no-gutters">
+                            <div id="title_name" class="row no-gutters">@Raw(@Model.ConvertMdContent(@Model.Home.Title))</div>
+                            <div id="title_description" class="row no-gutters">@Raw(@Model.ConvertMdContent(@Model.Home.TitleDescription))</div>
+                            <div id="title_actionlist" class="row no-gutters">
+                                @{ foreach(var menu in @Model.Home.TitleMenus) {
+                                <div class="col-sm-4">
+                                    <div id="nav-@menu.Id" class="nav-item text-center">
+                                        @Raw(@Model.ConvertMdContent(@menu.MdPath))
+                                    </div>
+                                </div>
+                                } } 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</header>
+
+<!-- body sections area -->
+<div class="container-fluid">
+    <div class="row">
+        @{ foreach(var bsection in @Model.Home.BodySections) {
+            <div id="section_@bsection.Id" class="col spaced-section animated @bsection.CustomCss">
+                <section>
+                    @Raw(@Model.ConvertMdContent(@bsection.MdPath))
+                </section>
+            </div>
+        } } 
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/velocity/1.5/velocity.min.js"></script>
+<script src="https://cdn.jsdelivr.net/velocity/1.5/velocity.ui.min.js"></script>
+<script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+<script src="static/lib/markdown.js"></script>
+<script src="static/home.js"></script>

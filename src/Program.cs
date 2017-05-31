@@ -2,6 +2,8 @@
 using System.IO;
 using Microsoft.Extensions.Configuration;
 using PersoBrandStaticGenerator.Models.Configuration;
+using PersoBrandStaticGenerator.Models.Services;
+using PersoBrandStaticGenerator.Models.Services.Parser;
 using RazorLight;
 using RazorLight.Extensions;
 namespace PersoBrandStaticGenerator
@@ -26,10 +28,15 @@ namespace PersoBrandStaticGenerator
             var fileInfo = new FileInfo("../content/template");
             var engine = EngineFactory.CreatePhysical(fileInfo.FullName);
 
-            //3 generate html string based on template file and model
-            string indexHtml = engine.Parse("index.cshtml", "");
+            //3 load model
+            var mdParserService = new MdContentParserService();
+            var mdParserDecorator = new WebMdContentParserDecorator(webContentPaths, mdParserService);
+            var homeParser = new HomeDecorator(mdParserDecorator, webContentStructure);
 
-            //4 save to output folder
+            //4 generate html string based on template file and model
+            string indexHtml = engine.Parse("index.cshtml", homeParser);
+
+            //5 save to output folder
             string outputFolder = Path.Combine(AppContext.BaseDirectory, "dist");
             if (!Directory.Exists(outputFolder))
                 Directory.CreateDirectory(outputFolder);
