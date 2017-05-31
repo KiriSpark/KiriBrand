@@ -1,0 +1,92 @@
+/*Mobile first style**/
+
+#title_header {
+    background-color: #f7f7f7
+}
+
+#title_name {
+    height: 110px;
+    vertical-align: middle;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+#title_description {
+    height: 110px;
+    vertical-align: middle;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    background-color: #efefef;
+}
+
+#title_actionlist {
+    height: auto;
+}
+
+#title_picture {
+    height: 210px;
+    background-position-x: center;
+    background-position-y: center;
+    background-size: cover;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: initial;
+}
+
+.nav-item {
+    color: white;
+    /*hidding the item by default has they appear by animation*/
+    opacity: 0;
+    height: 45px;
+    background-color: black;
+    vertical-align: middle;
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+}
+
+.spaced-section {
+    background-color: white;
+    display: inline-block;
+    margin: 0px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+}
+
+.animated {
+    visibility: hidden
+}
+
+.container-fluid {
+    padding: 0px;
+}
+
+.color-2 {
+    background-color: #e7e7e7;
+}
+
+.color-3 {
+    background-color: #efefef;
+}
+
+
+/* Middle to Wide Screen style
+
+Apply when screen size is equal or above 576px (bootstrap sm size) 
+media query css must be put after default style
+otherwise it cannot override default style
+*/
+
+@media screen and (min-width: 576px) {
+    #title_picture {
+        height: auto;
+        background-color: grey;
+    }
+    .nav-item {
+        height: 120px;
+    }
+}
