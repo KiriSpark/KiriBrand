@@ -37,7 +37,7 @@ namespace PersoBrandStaticGenerator
             string indexHtml = engine.Parse("index.cshtml", homeParser);
 
             //5 save to output folder
-            string outputFolder = Path.Combine(AppContext.BaseDirectory, "dist");
+            string outputFolder = webContentPaths.OutputFolderPath;
             if (!Directory.Exists(outputFolder))
                 Directory.CreateDirectory(outputFolder);
             File.WriteAllText(Path.Combine(outputFolder, "index.html"), indexHtml);

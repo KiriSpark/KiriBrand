@@ -3,7 +3,8 @@
     "version": "0.0.1",
     "description": "",
     "scripts": {
-        "build": "gulp build | dotnet build",
+        "build": "gulp build | npm run build-pages",
+        "build-pages": "cd src && dotnet build && dotnet run",
         "clean": "gulp clean"
     },
     "author": "Rickas Razafison",

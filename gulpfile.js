@@ -1,8 +1,8 @@
 var gulp = require("gulp");
 var del = require('del');
 var changed = require('gulp-changed');
-var sourceContentPath = "../content";
-var destContentPath = "bin/Debug/netcoreapp1.1/dist";
+var sourceContentPath = "content";
+var destContentPath = "dist";
 ///
 //
 // Clean Section
