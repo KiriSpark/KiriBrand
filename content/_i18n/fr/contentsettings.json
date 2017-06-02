@@ -1,0 +1,50 @@
+{
+    "WebContentStructure": {
+        "Home": {
+            //global information
+            "GlobalBackgroundPicture": "static/images/background.jpg",
+            "GlobalLoaderPicture": "static/images/loader.gif",
+
+            //title information
+            "Title": "home/title.md",
+            "TitleDescription": "home/title_description.md",
+            "TitleMenus": [{
+                "Id": "home",
+                "MdPath": "home/title_menus/home.md",
+                "ColorKey": "color_1"
+            }, {
+                "Id": "resume",
+                "MdPath": "home/title_menus/resume.md",
+                "ColorKey": "color_2"
+            }, {
+                "Id": "contact",
+                "MdPath": "home/title_menus/contact.md",
+                "ColorKey": "color_3"
+            }],
+            "TitlePicture": "static/images/photo_profile.jpg",
+
+            //body information
+            "BodySections": [{
+                "Id": "description",
+                "MdPath": "home/body_sections/description.md",
+                "ColorKey": "color_1",
+                "CustomCss": "col-12"
+            }, {
+                "Id": "minitimeline",
+                "MdPath": "home/body_sections/minitimeline.md",
+                "ColorKey": "color_1",
+                "CustomCss": "col-12 col-sm-4 color-2"
+            }, {
+                "Id": "status",
+                "MdPath": "home/body_sections/status.md",
+                "ColorKey": "color_2",
+                "CustomCss": "col-12 col-sm-8 color-3"
+            }, {
+                "Id": "skills",
+                "MdPath": "home/body_sections/skills.md",
+                "ColorKey": "color_3",
+                "CustomCss": "col-12"
+            }]
+        }
+    }
+}

@@ -21,5 +21,10 @@ namespace PersoBrandStaticGenerator.Models.Services.Parser
         {
             return this.webContentParser.ConvertMdContent(mdFilePath);
         }
+
+        public string GetRelativePath(string uri)
+        {
+            return this.webContentParser.GetRelativePath(uri);
+        }
     }
 }
