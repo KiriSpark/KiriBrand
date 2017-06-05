@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Dynamic;
 using System.IO;
 using Microsoft.Extensions.Configuration;
 using PersoBrandStaticGenerator.Models.Configuration;
@@ -6,6 +7,7 @@ using PersoBrandStaticGenerator.Models.Services;
 using PersoBrandStaticGenerator.Models.Services.Parser;
 using RazorLight;
 using RazorLight.Extensions;
+
 namespace PersoBrandStaticGenerator
 {
     class Program
@@ -37,7 +39,12 @@ namespace PersoBrandStaticGenerator
                 var homeParser = new HomeDecorator(mdParserDecorator, webContentStructure);
 
                 //4 generate html string based on template file and model
-                string indexHtml = engine.Parse("index.cshtml", homeParser);
+                var expandoBase = new ExpandoObject();
+                dynamic expb = expandoBase;
+                expb.Base = mdParserDecorator;
+                expb.Page = homeParser.Home;
+
+                string indexHtml = engine.Parse("index.cshtml", homeParser, expandoBase);
 
                 //5 save to output folder
                 string outputFolder = webContentPaths.Global.OutputFolderPath;
@@ -45,13 +52,11 @@ namespace PersoBrandStaticGenerator
                 {
                     outputFolder = Path.Combine(outputFolder, culture.Key);
                 }
+
                 if (!Directory.Exists(outputFolder))
                     Directory.CreateDirectory(outputFolder);
                 File.WriteAllText(Path.Combine(outputFolder, "index.html"), indexHtml);
             }
-
-
-
         }
     }
 }
