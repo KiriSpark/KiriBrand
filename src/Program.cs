@@ -7,6 +7,7 @@ using PersoBrandStaticGenerator.Models.Services;
 using PersoBrandStaticGenerator.Models.Services.Parser;
 using RazorLight;
 using RazorLight.Extensions;
+using System.Collections.Generic;
 
 namespace PersoBrandStaticGenerator
 {
@@ -14,17 +15,14 @@ namespace PersoBrandStaticGenerator
     {
         static void Main(string[] args)
         {
-            //1 load configuration 
+            //1 load configuration from src folder 
             var builder = new ConfigurationBuilder()
-                       .AddJsonFile("appsettings.json", false, true)
-                       .AddJsonFile("contentsettings.json", false, true)
+                       .AddJsonFile(new FileInfo("appsettings.json").FullName, false, true)
                        .AddEnvironmentVariables();
             var configuration = builder.Build();
 
             var webContentPaths = new WebContentPaths();
             configuration.GetSection("WebContent").Bind(webContentPaths);
-            var webContentStructure = new WebContentStructure();
-            configuration.GetSection("WebContentStructure").Bind(webContentStructure);
 
             //2 set base directory of template folder
             var fileInfo = new FileInfo(webContentPaths.Global.DefaultRazorTemplateFolderPath);
@@ -34,28 +32,45 @@ namespace PersoBrandStaticGenerator
             var mdParserService = new MdContentParserService();
             foreach (Culture culture in webContentPaths.Cultures)
             {
-                //3.1 load model
+                //3.1 load model for culture
+
+                //3.1.1 load configuration file for this culture
                 var mdParserDecorator = new WebMdContentParserDecorator(webContentPaths.Global, culture, mdParserService);
-                var homeParser = new HomeDecorator(mdParserDecorator, webContentStructure);
+                var confPath = new FileInfo(culture.ConfigurationFilePath).FullName;
+                var cultureConfigBuilder = new ConfigurationBuilder()
+                       .AddJsonFile(confPath, false, true)
+                       .Build();
+                var cultureStructure = new WebContentStructure();
+                configuration.GetSection("WebContentStructure").Bind(cultureStructure);
 
-                //4 generate html string based on template file and model
-                var expandoBase = new ExpandoObject();
-                dynamic expb = expandoBase;
-                expb.Base = mdParserDecorator;
-                expb.Page = homeParser.Home;
+                var pagesModel = new List<IPageDecorator>();
 
-                string indexHtml = engine.Parse("index.cshtml", homeParser, expandoBase);
-
-                //5 save to output folder
-                string outputFolder = webContentPaths.Global.OutputFolderPath;
-                if (culture.Key != webContentPaths.Global.DefaultCulture)
+                //3.1.2 add home information if available
+                if (cultureStructure.Home != null)
                 {
-                    outputFolder = Path.Combine(outputFolder, culture.Key);
+                    var homeParser = new HomeDecorator(mdParserDecorator, cultureStructure);
+                    pagesModel.Add(homeParser);
                 }
 
-                if (!Directory.Exists(outputFolder))
-                    Directory.CreateDirectory(outputFolder);
-                File.WriteAllText(Path.Combine(outputFolder, "index.html"), indexHtml);
+                //3.2 loading pages based on culture configuration
+                foreach (var model in pagesModel)
+                {
+                    ((dynamic)model.ExpandoPageData).Base = mdParserDecorator;
+                    //3.2.1 generate html string based on template file and model
+                    string indexHtml = engine.Parse(model.PageTemplatePath, model, model.ExpandoPageData);
+
+                    //3.2.2 save to output folder
+                    string outputFolder = webContentPaths.Global.OutputFolderPath;
+                    if (culture.Key != webContentPaths.Global.DefaultCulture)
+                    {
+                        outputFolder = Path.Combine(outputFolder, culture.Key);
+                    }
+
+                    if (!Directory.Exists(outputFolder))
+                        Directory.CreateDirectory(outputFolder);
+                    File.WriteAllText(Path.Combine(outputFolder, model.PageTemplatePath.Replace(".cshtml", ".html")), indexHtml);
+                }
+
             }
         }
     }

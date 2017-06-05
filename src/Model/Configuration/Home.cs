@@ -5,6 +5,7 @@ namespace PersoBrandStaticGenerator.Models.Configuration
     //of each specific home sections
     public class Home
     {
+        public string HomeTemplate { get; set; }
         public string GlobalBackgroundPicture { get; set; }
         public string GlobalLoaderPicture { get; set; }
         public string Title { get; set; }

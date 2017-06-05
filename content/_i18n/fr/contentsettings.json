@@ -2,6 +2,7 @@
     "WebContentStructure": {
         "Home": {
             //global information
+            "HomeTemplate": "index.cshtml",
             "GlobalBackgroundPicture": "static/images/background.jpg",
             "GlobalLoaderPicture": "static/images/loader.gif",
 
