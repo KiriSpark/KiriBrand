@@ -39,7 +39,8 @@ gulp.task('copy', function () {
     return gulp.src([sourceContentPath + '/**/*.css',
             sourceContentPath + '/**/*.js',
             sourceContentPath + '/**/*.jpg',
-            sourceContentPath + '/**/*.gif'
+            sourceContentPath + '/**/*.gif',
+            sourceContentPath + '/**/fonts/*.*',
         ])
         .pipe(changed(destContentPath))
         .pipe(gulp.dest(destContentPath));

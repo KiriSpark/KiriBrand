@@ -1,5 +1,19 @@
 /*Mobile first style**/
 
+#title_lang {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 1000;
+    border-radius: 0;
+}
+
+#title_lang>.btn-group>.dropdown-menu {
+    min-width: 5rem;
+    border-radius: 0;
+    padding: 0px;
+}
+
 #title_header {
     background-color: #f7f7f7
 }
@@ -82,6 +96,10 @@ otherwise it cannot override default style
 */
 
 @media screen and (min-width: 576px) {
+    #title_lang {
+        top: 0px;
+        right: 85px;
+    }
     #title_picture {
         height: auto;
         background-color: grey;
