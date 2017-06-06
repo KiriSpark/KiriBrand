@@ -4,10 +4,10 @@ using Markdig;
 namespace PersoBrandStaticGenerator.Models.Services
 {
     //service to parse an md file to html content
-    public class MdContentParserService
+    public class MdContentParser
     {
         private readonly MarkdownPipeline pipeline;
-        public MdContentParserService()
+        public MdContentParser()
         {
             // Configure the pipeline with all advanced extensions active
             //except (except Emoji, SoftLine as HarLine and SmartyPants)

@@ -2,12 +2,13 @@
 using System.Dynamic;
 using System.IO;
 using Microsoft.Extensions.Configuration;
-using PersoBrandStaticGenerator.Models.Configuration;
 using PersoBrandStaticGenerator.Models.Services;
-using PersoBrandStaticGenerator.Models.Services.Parser;
 using RazorLight;
 using RazorLight.Extensions;
 using System.Collections.Generic;
+using PersoBrandStaticGenerator.Models.Configuration.Core;
+using PersoBrandStaticGenerator.Models.Configuration.Content;
+using PersoBrandStaticGenerator.Models.Services.Page;
 
 namespace PersoBrandStaticGenerator
 {
@@ -29,26 +30,27 @@ namespace PersoBrandStaticGenerator
             var engine = EngineFactory.CreatePhysical(fileInfo.FullName);
 
             //3 generate html files, for each culture:
-            var mdParserService = new MdContentParserService();
+            var mdParserService = new MdContentParser();
+            var staticAssetsResolver = new StaticAssetsPathResolver();
             foreach (Culture culture in webContentPaths.Cultures)
             {
                 //3.1 load model for culture
 
                 //3.1.1 load configuration file for this culture
-                var mdParserDecorator = new WebMdContentParserDecorator(webContentPaths.Global, culture, mdParserService);
+                var mdParserDecorator = new MdRazorPageDecorator(webContentPaths.Global, culture, mdParserService, staticAssetsResolver);
                 var confPath = new FileInfo(culture.ConfigurationFilePath).FullName;
                 var cultureConfigBuilder = new ConfigurationBuilder()
                        .AddJsonFile(confPath, false, true)
                        .Build();
                 var cultureStructure = new WebContentStructure();
-                configuration.GetSection("WebContentStructure").Bind(cultureStructure);
+                cultureConfigBuilder.GetSection("WebContentStructure").Bind(cultureStructure);
 
-                var pagesModel = new List<IPageDecorator>();
+                var pagesModel = new List<IRazorPage>();
 
                 //3.1.2 add home information if available
                 if (cultureStructure.Home != null)
                 {
-                    var homeParser = new HomeDecorator(mdParserDecorator, cultureStructure);
+                    var homeParser = new HomePage(mdParserDecorator, cultureStructure);
                     pagesModel.Add(homeParser);
                 }
 

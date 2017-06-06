@@ -1,4 +1,4 @@
-namespace PersoBrandStaticGenerator.Models.Configuration
+namespace PersoBrandStaticGenerator.Models.Configuration.Content
 {
     //Home page content information
     //Each property points to the resource location
@@ -10,8 +10,8 @@ namespace PersoBrandStaticGenerator.Models.Configuration
         public string GlobalLoaderPicture { get; set; }
         public string Title { get; set; }
         public string TitleDescription { get; set; }
-        public TitleMenu[] TitleMenus { get; set; }
+        public MdItem[] TitleMenus { get; set; }
         public string TitlePicture { get; set; }
-        public BodySection[] BodySections { get; set; }
+        public MdItem[] BodySections { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-namespace PersoBrandStaticGenerator.Models.Configuration
+namespace PersoBrandStaticGenerator.Models.Configuration.Core
 {
     public class WebContentPaths
     {

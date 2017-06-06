@@ -3,25 +3,30 @@ using System.IO;
 using Markdig;
 using Microsoft.Extensions.Options;
 using PersoBrandStaticGenerator.Models.Configuration;
+using PersoBrandStaticGenerator.Models.Configuration.Core;
 
-namespace PersoBrandStaticGenerator.Models.Services.Parser
+namespace PersoBrandStaticGenerator.Models.Services.Page
 {
     //Decorator class which groups all the configuration data related to the
     //website structure paths, and provides helper convert to MD files to html content
-    public class WebMdContentParserDecorator
+    public class MdRazorPageDecorator
     {
-        private readonly Culture culture;
-        private readonly MdContentParserService mdContentConverterService;
         private readonly Global globalSettings;
+        private readonly Culture culture;
+        private readonly MdContentParser mdContentConverterService;
+        private readonly StaticAssetsPathResolver staticAssetsPathResolver;
 
-        public WebMdContentParserDecorator(
+
+        public MdRazorPageDecorator(
             Global globalSettings,
             Culture culture,
-            MdContentParserService mdContentConverterService)
+            MdContentParser mdContentConverterService,
+            StaticAssetsPathResolver staticAssetsPathResolver)
         {
+            this.globalSettings = globalSettings;
             this.culture = culture;
             this.mdContentConverterService = mdContentConverterService;
-            this.globalSettings = globalSettings;
+            this.staticAssetsPathResolver = staticAssetsPathResolver;
         }
 
         //Convert config md file Path to html content
@@ -38,20 +43,15 @@ namespace PersoBrandStaticGenerator.Models.Services.Parser
         //Convert config md file Path to html content
         public string GetRelativePath(string uri)
         {
+            uri = uri.Trim();
             //if we are dealing with the default culture
             if (this.culture.Key == this.globalSettings.DefaultCulture)
                 return uri;
 
             string outputAbsolutePath = new DirectoryInfo(this.globalSettings.OutputFolderPath).FullName;
-            Uri pathUri = new Uri(Path.Combine(outputAbsolutePath, uri));
-            // Folders must end in a slash
+            string filePath = Path.Combine(outputAbsolutePath, uri);
             string rootFolder = Path.Combine(outputAbsolutePath, culture.Key);
-            if (!rootFolder.EndsWith(Path.DirectorySeparatorChar.ToString()))
-            {
-                rootFolder += Path.DirectorySeparatorChar;
-            }
-            Uri folderUri = new Uri(rootFolder);
-            string result = Uri.UnescapeDataString(folderUri.MakeRelativeUri(pathUri).ToString());
+            string result = this.staticAssetsPathResolver.GetRelativePath(filePath, rootFolder);
             return result;
         }
 

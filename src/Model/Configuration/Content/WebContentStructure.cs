@@ -1,4 +1,4 @@
-namespace PersoBrandStaticGenerator.Models.Configuration
+namespace PersoBrandStaticGenerator.Models.Configuration.Content
 {
     public class WebContentStructure
     {

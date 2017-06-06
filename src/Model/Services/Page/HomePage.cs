@@ -2,13 +2,14 @@ using System.Dynamic;
 using System.IO;
 using Microsoft.Extensions.Options;
 using PersoBrandStaticGenerator.Models.Configuration;
+using PersoBrandStaticGenerator.Models.Configuration.Content;
 
-namespace PersoBrandStaticGenerator.Models.Services.Parser
+namespace PersoBrandStaticGenerator.Models.Services.Page
 {
     //Decorator class which load and convert Home object content into html content
-    public class HomeDecorator : IPageDecorator
+    public class HomePage : IRazorPage
     {
-        private readonly WebMdContentParserDecorator webContentParser;
+        private readonly MdRazorPageDecorator webContentParser;
         public readonly Home Home;
 
         //IPageDecorator implementation
@@ -35,8 +36,8 @@ namespace PersoBrandStaticGenerator.Models.Services.Parser
             }
         }
 
-        public HomeDecorator(
-            WebMdContentParserDecorator webContentParser,
+        public HomePage(
+            MdRazorPageDecorator webContentParser,
             WebContentStructure contentStructureAccessor)
         {
             this.webContentParser = webContentParser;
