@@ -19,7 +19,7 @@ In addition to that, It uses github pages to host the generated website.
 
 ## Dependencies
 
-In order to build the static content, you will have to install:
+In order to build the website content, you will have to install:
 * dotnet core 1.1
 * node js
 
@@ -27,8 +27,16 @@ In order to build the static content, you will have to install:
 
 Once you have cloned the repository, from a command prompt type:
 
+* Restore required dotnet packages:
 ``` sh
+$ cd src
 $ dotnet restore
+```
+
+* Go back to repository root folder, restore npm packages and run the build process:
+
+``` sh
+$ cd .. 
 $ npm install
 $ npm run build
 ```
