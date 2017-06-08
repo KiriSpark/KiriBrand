@@ -6,14 +6,17 @@ dist: trusty
 node_js:
   -"node"
 install: npm run restore
-script: npm run build
+script: 
+  - npm run build
+  - npm run ls
+
 deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   on:
     branch: master
-    local_dir: dist
+    local_dir: ./dist
     target_branch: gh-pages
     email: deploy@travis-ci.org
     name: Deployment Bot
