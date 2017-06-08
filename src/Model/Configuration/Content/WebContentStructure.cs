@@ -1,4 +1,4 @@
-namespace PersoBrandStaticGenerator.Models.Configuration.Content
+namespace KiriBrand.Static.Models.Configuration.Content
 {
     public class WebContentStructure
     {

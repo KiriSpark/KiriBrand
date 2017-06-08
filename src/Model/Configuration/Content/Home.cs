@@ -1,4 +1,4 @@
-namespace PersoBrandStaticGenerator.Models.Configuration.Content
+namespace KiriBrand.Static.Models.Configuration.Content
 {
     //Home page content information
     //Each property points to the resource location

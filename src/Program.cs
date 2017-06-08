@@ -2,13 +2,13 @@
 using System.Dynamic;
 using System.IO;
 using Microsoft.Extensions.Configuration;
-using PersoBrandStaticGenerator.Models.Services;
+using KiriBrand.Static.Services;
 using RazorLight;
 using RazorLight.Extensions;
 using System.Collections.Generic;
-using PersoBrandStaticGenerator.Models.Configuration.Core;
-using PersoBrandStaticGenerator.Models.Configuration.Content;
-using PersoBrandStaticGenerator.Models.Services.Page;
+using KiriBrand.Static.Models.Configuration.Core;
+using KiriBrand.Static.Models.Configuration.Content;
+using KiriBrand.Static.Services.Page;
 
 namespace PersoBrandStaticGenerator
 {

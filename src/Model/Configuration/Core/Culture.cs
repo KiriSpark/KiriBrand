@@ -1,4 +1,4 @@
-namespace PersoBrandStaticGenerator.Models.Configuration.Core
+namespace KiriBrand.Static.Models.Configuration.Core
 {
     public class Culture
     {
