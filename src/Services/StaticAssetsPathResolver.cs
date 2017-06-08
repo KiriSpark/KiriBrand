@@ -19,6 +19,8 @@ namespace KiriBrand.Static.Services
         {
             try
             {
+                filePath = filePath.StartsWith("/") ? filePath.Insert(0, "/") : filePath;
+                rootFolderPath = rootFolderPath.StartsWith("/") ? rootFolderPath.Insert(0, "/") : rootFolderPath;
                 Uri pathUri = new Uri(filePath);
                 // Folders must end in a slash
                 if (!rootFolderPath.EndsWith(Path.DirectorySeparatorChar.ToString()))

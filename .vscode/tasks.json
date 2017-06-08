@@ -6,7 +6,7 @@
     "tasks": [{
         "taskName": "build",
         "args": [
-            "${workspaceRoot}/src/PersoBrandStaticGenerator.csproj"
+            "${workspaceRoot}/src/KiriBrand.Static.csproj"
         ],
         "isBuildCommand": true,
         "problemMatcher": "$msCompile"
