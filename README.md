@@ -12,6 +12,7 @@ In addition to that, It uses github pages to host the generated website.
     ├── content                 # Portfolio website source files (md files which represents the content, html templates and static assets)
     ├── docs                    # Documentation files and pictures (only for this repository)
     ├── src                     # Source code of KiriBrand.Static
+    ├── tests                   # Test project of KiriBrand.Static
     └── README.md
     
 
