@@ -1,7 +1,7 @@
 # KiriBrand 
 
 KiriBrand is a repository that contains:
-* **the website content** of my portfolio website 
+* **the content** of my portfolio website 
 * **KiriBrand.Static source code**: a dotnet core console application which can generate a static site based on markdown files and templates\static assets contained in the root content folder.
 
 In addition to that, It uses github pages to host the generated website.
@@ -25,7 +25,7 @@ In order to build the website content, you will have to install:
 
 ## Instructions
 
-Once you have cloned the repository, from a command prompt type:
+Once you have cloned the repository, from a command prompt:
 
 * Restore required dotnet packages:
 ``` sh
@@ -41,7 +41,7 @@ $ npm install
 $ npm run build
 ```
 
-The last command will create a "dist" folder which will contains the generated website.
+The last command will create a "dist" folder which will contain the generated website.
 
 # Description
 
