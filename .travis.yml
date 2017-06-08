@@ -2,6 +2,7 @@
 language: csharp
 mono: none
 dotnet: 1.1.1
+dist: trusty
 node_js:
   -"node"
 install: npm run restore
