@@ -14,9 +14,9 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
+  local_dir: dist
+  target_branch: gh-pages
+  email: deploy@travis-ci.org
+  name: Deployment Bot
   on:
     branch: master
-    local_dir: ./dist
-    target_branch: gh-pages
-    email: deploy@travis-ci.org
-    name: Deployment Bot
