@@ -1,47 +1,45 @@
 <link rel="stylesheet" href="@Model.GetRelativePath(" static/css/home.css ")">
 <link rel="stylesheet" href="@Model.GetRelativePath(" static/css/custom/cust_home.css ")">
 <link rel="stylesheet" href="@Model.GetRelativePath(" static/css/custom/timeline.css ")">
-
+<style>
+    #stage {
+        background-image: url(@Model.GetRelativePath("static/images/landing.jpg"));
+    }
+</style>
 <!--title and menus area -->
-<header>
-    <section>
-        <div class="row">
-                <div id="title_lang">
-                    
-                    <div class="btn-group">
-                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+<div id="title_lang">
+    <div class="btn-group">
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fa fa-globe fa-2x"></i> 
                     </button>
-                        <div class="dropdown-menu dropdown-menu-right color-3">
-                            <a class="dropdown-item" href="@Model.GetRelativePath("./")">English</a>
-                            <a class="dropdown-item" href="@Model.GetRelativePath("./fr/")">Français</a>
-                        </div>
-                    </div>
-                </div>
+        <div class="dropdown-menu dropdown-menu-right color-3">
+            <a class="dropdown-item" href="@Model.GetRelativePath(" ./ ")">English</a>
+            <a class="dropdown-item" href="@Model.GetRelativePath(" ./fr/ ")">Français</a>
         </div>
-        <div class="container-fluid">            
-            <div id="title_header" class="row no-gutters">
-                <div id="title_picture" class="col-sm-4 no-gutters"></div>
-                <div class="col-sm-8 no-gutters">
-                    <div class="row no-gutters">
-                        <div class="col no-gutters">
-                            <div id="title_name" class="row no-gutters">@Raw(@Model.ConvertMdContent(@Model.Home.Title))</div>
-                            <div id="title_description" class="row no-gutters">@Raw(@Model.ConvertMdContent(@Model.Home.TitleDescription))</div>
-                            <div id="title_actionlist" class="row no-gutters">
-                                @{ foreach(var menu in @Model.Home.TitleMenus) {
-                                <div class="col-sm-4">
-                                    <div id="nav-@menu.Id" class="nav-item text-center">
-                                        @Raw(@Model.ConvertMdContent(@menu.MdPath))
-                                    </div>
-                                </div>
-                                } }
-                            </div>
+    </div>
+</div>
+<header>
+    <div id="landing_stage">
+        <div id="stage">
+            <div id="stage-caption">
+                <h1 class="display-3">@Raw(@Model.ConvertMdContent(@Model.Home.Title))</h1>
+                <p>@Raw(@Model.ConvertMdContent(@Model.Home.TitleDescription))</p>
+            </div>
+            <div id="landing_actionlist" class="container-fluid">
+                <div class="row no-gutters">
+                    @{ foreach(var menu in @Model.Home.TitleMenus) {
+                    <div class="col-sm-4">
+                        <div id="nav-@menu.Id" class="nav-item text-center">
+                            @Raw(@Model.ConvertMdContent(@menu.MdPath))
                         </div>
                     </div>
+                    } }
                 </div>
             </div>
+
         </div>
-    </section>
+
+    </div>
 </header>
 
 <!-- body sections area -->

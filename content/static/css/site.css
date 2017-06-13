@@ -22,10 +22,4 @@ media query css must be put after default style
 otherwise it cannot override default style
 */
 
-@media screen and (min-width: 576px) {
-    /*add margin on left and right side when screen is large*/
-    body {
-        margin-left: 84px;
-        margin-right: 84px;
-    }
-}
+@media screen and (min-width: 576px) {}
