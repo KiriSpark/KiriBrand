@@ -25,6 +25,9 @@
                 <h1 class="display-3">@Raw(@Model.ConvertMdContent(@Model.Home.Title))</h1>
                 <p>@Raw(@Model.ConvertMdContent(@Model.Home.TitleDescription))</p>
             </div>
+            <div id="scrolldown">
+                <a class="smoothscroll"><i class="fa fa-angle-double-down fa-3x"></i></a>
+            </div>
             <div id="landing_actionlist" class="container-fluid">
                 <div class="row no-gutters">
                     @{ foreach(var menu in @Model.Home.TitleMenus) {
@@ -43,7 +46,7 @@
 </header>
 
 <!-- body sections area -->
-<div class="container-fluid">
+<div id="body_area" class="container-fluid">
     <div class="row">
         @{ foreach(var bsection in @Model.Home.BodySections) {
         <div id="section_@bsection.Id" class="col spaced-section animated @bsection.CustomCss">

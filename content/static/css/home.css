@@ -40,7 +40,7 @@ body {
     height: 100%;
     width: 100%;
     display: flex;
-    flex-flow: column;
+    flex-direction: column;
 }
 
 #stage-caption {
@@ -49,7 +49,6 @@ body {
     max-width: 60rem;
     margin: 0 auto;
     text-align: center;
-    max-width: 50%;
     margin-top: auto;
 }
 
@@ -57,6 +56,11 @@ body {
     color: black;
     font-weight: bold;
     text-transform: uppercase;
+}
+
+#scrolldown {
+    margin: 0 auto;
+    height: 50px;
 }
 
 
