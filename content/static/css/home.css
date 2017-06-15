@@ -1,5 +1,23 @@
 /*Mobile first style**/
 
+
+/*
+ANIMATION
+required otherwise there's some overflow on the right
+because of ScrollReveal animations
+*/
+
+html {
+    overflow-x: hidden!important;
+}
+
+
+/*
+Language Switcher
+required otherwise there's some overflow on the right
+because of ScrollReveal animations
+*/
+
 #title_lang {
     position: absolute;
     top: 0px;
@@ -15,6 +33,11 @@
 }
 
 
+/*
+Navigation bar
+*/
+
+
 /****************landing page settings***************/
 
 html,
@@ -25,15 +48,6 @@ header,
     height: 100%;
 }
 
-
-/*
-required otherwise there's some overflow on the right
-*/
-
-body {
-    overflow-x: hidden;
-}
-
 #stage {
     background-size: cover;
     color: black;
@@ -41,6 +55,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
+    flex-wrap: nowrap;
 }
 
 #stage-caption {
@@ -84,18 +99,6 @@ img {
     height: auto;
 }
 
-.nav-item {
-    color: white;
-    /*hidding the item by default has they appear by animation*/
-    opacity: 0;
-    height: 45px;
-    background-color: black;
-    vertical-align: middle;
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-}
-
 .spaced-section {
     background-color: white;
     display: inline-block;
@@ -106,7 +109,8 @@ img {
 }
 
 .animated {
-    visibility: hidden
+    visibility: hidden;
+    overflow: hidden;
 }
 
 .container-fluid {
@@ -129,12 +133,4 @@ media query css must be put after default style
 otherwise it cannot override default style
 */
 
-@media screen and (min-width: 576px) {
-    #title_picture {
-        height: auto;
-        background-color: grey;
-    }
-    .nav-item {
-        height: 120px;
-    }
-}
+@media screen and (min-width: 576px) {}
