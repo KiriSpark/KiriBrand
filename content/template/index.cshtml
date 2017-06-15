@@ -30,18 +30,25 @@
             </div>
             <div id="landing_actionlist" class="container-fluid">
                 <div class="row no-gutters">
-                    @{ foreach(var menu in @Model.Home.TitleMenus) {
-                    <div class="col-sm-4">
-                        <div id="nav-@menu.Id" class="nav-item text-center">
-                            @Raw(@Model.ConvertMdContent(@menu.MdPath))
+                    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse" style="width:100%">
+                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">KS</a>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mx-auto">
+                                @{ foreach(var menu in @Model.Home.TitleMenus) {
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">@Raw(@Model.ConvertMdContent(@menu.MdPath))</a>
+                                </li>
+                                } }
+                            </ul>
                         </div>
-                    </div>
-                    } }
+                    </nav>
                 </div>
             </div>
-
         </div>
-
     </div>
 </header>
 
