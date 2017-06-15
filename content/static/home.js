@@ -5,7 +5,7 @@ $(window).load(function () {
         //hide the loader
         $(".se-pre-con").hide();
         //call page animation
-        animateHeader();
+        //animateHeader();
         animateSections();
         animateLandingScrollButton();
         $('#landing_actionlist').stickUp({
@@ -40,7 +40,7 @@ function animateSections() {
         duration: 300,
         delay: 600,
         distance: '200px',
-        origin: 'right',
+        origin: 'bottom',
         easing: 'cubic-bezier(1, 1, 1, 1)'
     };
     var sr = window.sr = ScrollReveal();
@@ -55,7 +55,7 @@ function animateLandingScrollButton() {
     }, {
         loop: true
     });
-    $('.smoothscroll').on('click', function (e) {
+    $('#scrolldown').on('click', function (e) {
         e.preventDefault();
 
         //using the navbar height as offset because the navbar

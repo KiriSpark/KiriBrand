@@ -91,6 +91,7 @@ header,
 #scrolldown {
     margin: 0 auto;
     height: 50px;
+    z-index: 1000;
 }
 
 
@@ -125,7 +126,6 @@ img {
 
 .animated {
     visibility: hidden;
-    overflow: hidden;
 }
 
 .container-fluid {
