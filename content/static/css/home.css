@@ -59,8 +59,6 @@ header,
 }
 
 #stage-caption {
-    font-size: 1.4rem;
-    font-weight: 400;
     max-width: 60rem;
     margin: 0 auto;
     text-align: center;
@@ -70,8 +68,25 @@ header,
 #stage-caption h1 {
     color: black;
     font-weight: bold;
-    text-transform: uppercase;
 }
+
+#title_description {
+    margin: 0 auto;
+}
+
+
+/*settings for animated headline */
+
+#stage-caption .cd-headline {
+    font-size: 3rem;
+}
+
+#stage-caption .cd-words-wrapper b {
+    font-size: 3rem;
+}
+
+
+/**/
 
 #scrolldown {
     margin: 0 auto;

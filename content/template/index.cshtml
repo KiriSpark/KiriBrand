@@ -22,8 +22,10 @@
     <div id="landing_stage">
         <div id="stage">
             <div id="stage-caption">
-                <h1 class="display-3">@Raw(@Model.ConvertMdContent(@Model.Home.Title))</h1>
-                <p>@Raw(@Model.ConvertMdContent(@Model.Home.TitleDescription))</p>
+                <h1>@Raw(@Model.ConvertMdContent(@Model.Home.Title))</h1>
+                <div id="title_description">
+                     @Raw(@Model.ConvertMdContent(@Model.Home.TitleDescription))
+                </div>
             </div>
             <div id="scrolldown">
                 <a class="smoothscroll"><i class="fa fa-angle-double-down fa-3x"></i></a>
