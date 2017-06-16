@@ -15,13 +15,14 @@ namespace KiriBrand.Static.Services.Page
         private readonly Culture culture;
         private readonly MdContentParser mdContentConverterService;
         private readonly StaticAssetsPathResolver staticAssetsPathResolver;
-
+        public readonly Options Options;
 
         public MdRazorPageDecorator(
             Global globalSettings,
             Culture culture,
             MdContentParser mdContentConverterService,
-            StaticAssetsPathResolver staticAssetsPathResolver)
+            StaticAssetsPathResolver staticAssetsPathResolver,
+            Options options)
         {
             this.globalSettings = globalSettings;
             this.culture = culture;

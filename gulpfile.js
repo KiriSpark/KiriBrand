@@ -6,6 +6,11 @@ var destContentPath = "dist";
 var browserSync = require('browser-sync');
 var exec = require('child_process').exec;
 var gutil = require('gulp-util');
+var cleanCSS = require('gulp-clean-css');
+var uglify = require('gulp-uglify');
+var concat = require('gulp-concat');
+var pump = require('pump');
+
 
 ///
 //
@@ -14,10 +19,10 @@ var gutil = require('gulp-util');
 ///
 
 /**
- * Clean wwwroot
+ * Clean dist
  */
 gulp.task('clean', function () {
-    return del(destContentPath);
+    return del([destContentPath + '/**', '!' + destContentPath]);
 });
 
 
@@ -28,16 +33,88 @@ gulp.task('clean', function () {
 ///
 
 /**
+ * Build Prod, uglify/minify js, css files
+ */
+gulp.task('build-prod', [
+    'build-prod-css-vendor',
+    'build-prod-css-main',
+    'build-prod-js-vendor',
+    'build-prod-js-main',
+    'copy-assets'
+]);
+
+gulp.task('build-prod-css-vendor', function (cb) {
+    //minify/bundle css files
+    pump([
+        gulp.src([
+            sourceContentPath + '/**/css/lib/*.css',
+            sourceContentPath + '/**/font-awesome.min.css'
+        ]),
+        cleanCSS(),
+        concat('vendor.css'),
+        gulp.dest(destContentPath)
+    ], cb);
+});
+
+gulp.task('build-prod-css-main', function (cb) {
+    //minify/bundle css files
+    pump([
+        gulp.src([
+            sourceContentPath + '/**/home.css',
+            sourceContentPath + '/**/site.css'
+        ]),
+        cleanCSS(),
+        gulp.dest(destContentPath)
+    ], cb);
+});
+
+gulp.task('build-prod-js-vendor', function (cb) {
+    //uglify/bundle js files
+    pump([
+        gulp.src(sourceContentPath + '/**/lib/*.js'),
+        uglify(),
+        concat('vendor.js'),
+        gulp.dest(destContentPath)
+    ], cb);
+});
+
+gulp.task('build-prod-js-main', function (cb) {
+    //uglify/bundle js files
+    pump([
+        gulp.src([
+            sourceContentPath + '/**/home.js',
+        ]),
+        uglify(),
+        gulp.dest(destContentPath)
+    ], cb);
+});
+
+/**
+ * END Build Prod
+ */
+
+
+
+
+/**
  * Build all
  */
-gulp.task('build', ['copy']);
+gulp.task('build', ['copy-js-css', 'copy-assets']);
 
 /**
  * Copy css, images and static js
  */
-gulp.task('copy', function () {
+
+gulp.task('copy-js-css', function () {
     return gulp.src([sourceContentPath + '/**/*.css',
-            sourceContentPath + '/**/*.js',
+            sourceContentPath + '/**/*.js'
+        ])
+        .pipe(changed(destContentPath))
+        .pipe(gulp.dest(destContentPath));
+});
+
+gulp.task('copy-assets', function () {
+    return gulp.src([
             sourceContentPath + '/**/*.jpg',
             sourceContentPath + '/**/*.gif',
             sourceContentPath + '/**/fonts/*.*',
@@ -77,7 +154,7 @@ gulp.task('watch', function () {
         sourceContentPath + '/**/*.js',
         sourceContentPath + '/**/*.jpg',
         sourceContentPath + '/**/*.gif'
-    ], ['copy']);
+    ], ['build']);
 
     //watch cshtml razor templates and md files
     gulp.watch([

@@ -10,12 +10,19 @@ using KiriBrand.Static.Models.Configuration.Core;
 using KiriBrand.Static.Models.Configuration.Content;
 using KiriBrand.Static.Services.Page;
 
-namespace PersoBrandStaticGenerator
+namespace KiriBrand
 {
     class Program
     {
         static void Main(string[] args)
         {
+            //0 read options from args
+            var options = new Options();
+            if (args.Length > 0 && args[0] == "--prod")
+                options.Environment = Environment.Prod;
+            else
+                options.Environment = Environment.Dev;
+
             //1 load configuration from src folder 
             var builder = new ConfigurationBuilder()
                        .AddJsonFile(new FileInfo("appsettings.json").FullName, false, true)
@@ -37,7 +44,7 @@ namespace PersoBrandStaticGenerator
                 //3.1 load model for culture
 
                 //3.1.1 load configuration file for this culture
-                var mdParserDecorator = new MdRazorPageDecorator(webContentPaths.Global, culture, mdParserService, staticAssetsResolver);
+                var mdParserDecorator = new MdRazorPageDecorator(webContentPaths.Global, culture, mdParserService, staticAssetsResolver, options);
                 var confPath = new FileInfo(culture.ConfigurationFilePath).FullName;
                 var cultureConfigBuilder = new ConfigurationBuilder()
                        .AddJsonFile(confPath, false, true)
