@@ -1,0 +1,151 @@
+/*Mobile first style**/
+
+
+/*
+ANIMATION
+required otherwise there's some overflow on the right
+because of ScrollReveal animations
+*/
+
+html {
+    overflow-x: hidden!important;
+}
+
+
+/*
+Language Switcher
+required otherwise there's some overflow on the right
+because of ScrollReveal animations
+*/
+
+#title_lang {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    z-index: 1000;
+    border-radius: 0;
+}
+
+#title_lang>.btn-group>.dropdown-menu {
+    min-width: 5rem;
+    border-radius: 0;
+    padding: 0px;
+}
+
+
+/*
+Navigation bar
+*/
+
+
+/****************landing page settings***************/
+
+html,
+body,
+header,
+#landing_stage,
+.row {
+    height: 100%;
+}
+
+#stage {
+    background-size: cover;
+    color: black;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+#stage-caption {
+    max-width: 60rem;
+    margin: 0 auto;
+    text-align: center;
+    margin-top: auto;
+}
+
+#stage-caption h1 {
+    color: black;
+    font-weight: bold;
+}
+
+#title_description {
+    margin: 0 auto;
+}
+
+
+/*settings for animated headline */
+
+#stage-caption .cd-headline {
+    font-size: 3rem;
+}
+
+#stage-caption .cd-words-wrapper b {
+    font-size: 3rem;
+}
+
+
+/**/
+
+#scrolldown {
+    margin: 0 auto;
+    height: 50px;
+    z-index: 1000;
+}
+
+
+/*
+align the nav bar to the bottom 
+*/
+
+#landing_actionlist {
+    margin-top: auto;
+    width: 100%
+}
+
+img {
+    max-width: 100%;
+}
+
+
+/************************************************/
+
+#title_actionlist {
+    height: auto;
+}
+
+.spaced-section {
+    background-color: white;
+    display: inline-block;
+    margin: 0px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    width: 100%;
+}
+
+.animated {
+    visibility: hidden;
+}
+
+.container-fluid {
+    padding: 0px;
+}
+
+.color-2 {
+    background-color: #e7e7e7;
+}
+
+.color-3 {
+    background-color: #efefef;
+}
+
+
+/* Middle to Wide Screen style
+
+Apply when screen size is equal or above 576px (bootstrap sm size) 
+media query css must be put after default style
+otherwise it cannot override default style
+*/
+
+@media screen and (min-width: 576px) {}

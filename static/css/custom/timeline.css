@@ -1,0 +1,40 @@
+/*style for timeline mini*/
+
+.mini-timeline {
+    border-left: 1px solid grey;
+    overflow: visible;
+    padding-left: 24px;
+    margin-left: 20px;
+}
+
+.mini-timeline>ul {
+    padding-left: 0px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+}
+
+.mini-timeline>ul>li>a {
+    position: relative;
+}
+
+.mini-timeline-light {
+    font-size: 9px;
+}
+
+.mini-timeline-bold {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.mini-timeline-point::before {
+    position: absolute;
+    background-color: rgb(167, 167, 167);
+    width: 9px;
+    height: 9px;
+    top: 7px;
+    left: -29px;
+    border-radius: 4px;
+    content: "";
+}

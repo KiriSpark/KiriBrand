@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
+ 
+    <link rel="stylesheet" href="../static/css/site.css">
+    <link rel="stylesheet" href="../static/css/lib/markdown.css">
+    <link rel="stylesheet" href="../static/css/lib/markdown_extra.css">
+    <link rel="stylesheet" href="../static/css/lib/animated-headlines.css">
+    <link rel="stylesheet" href="../static/css/font-awesome.min.css">
+    <style>
+    /*Preloader gif animation css
+    This only works with JavaScript, 
+    if it's not present, don't show loader */
+
+        .no-js #loader {
+            display: none;
+        }
+
+        .js #loader {
+            display: block;
+            position: absolute;
+            left: 100px;
+            top: 0;
+        }
+
+        .se-pre-con {
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            background: url(../static/images/loader.gif) center no-repeat #fff;
+        }
+
+        body {
+            background-image: url(../static/images/background.jpg);
+        }
+
+        #title_picture {
+            background-image: url(../static/images/photo_profile.jpg);
+        }
+    
+    </style>
+
+</head>
+
+<body>
+    <!-- placeholder for custom loader before page load -->
+    <div class="se-pre-con"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/velocity/1.5/velocity.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/velocity/1.5/velocity.ui.min.js"></script>
+    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
+    <script src="../static/lib/markdown.js"></script>
+    <script src="../static/lib/stickUp.js"></script>
+    <script src="../static/lib/animated-headlines.js"></script>
+
+    
+<link rel="stylesheet" href="../static/css/home.css">
+<link rel="stylesheet" href="../static/css/custom/cust_home.css">
+<link rel="stylesheet" href="../static/css/custom/timeline.css">
+<style>
+    #stage {
+        background-image: url(../static/images/landing.jpg);
+    }
+</style>
+<!--title and menus area -->
+<div id="title_lang">
+    <div class="btn-group">
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-globe fa-2x"></i> 
+                    </button>
+        <div class="dropdown-menu dropdown-menu-right color-3">
+            <a class="dropdown-item" href="../">English</a>
+            <a class="dropdown-item" href="">Français</a>
+        </div>
+    </div>
+</div>
+<header>
+    <div id="landing_stage">
+        <div id="stage">
+            <div id="stage-caption">
+                <h1><p>Olive</p>
+</h1>
+                <div id="title_description">
+                     <p>description du titre</p>
+
+                </div>
+            </div>
+            <div id="scrolldown">
+                <a class="smoothscroll"><i class="fa fa-angle-double-down fa-3x"></i></a>
+            </div>
+            <div id="landing_actionlist" class="container-fluid">
+                <div class="row no-gutters">
+                    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse" style="width:100%">
+                        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <a class="navbar-brand" href="#">KS</a>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav mx-auto">
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><p>Accueil</p>
+</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><p>C.V</p>
+</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><p>Mes Contacts</p>
+</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- body sections area -->
+<div id="body_area" class="container-fluid">
+    <div class="row">
+        <div id="section_description" class="col spaced-section animated col-12">
+            <section>
+                <h3 id="description">Description</h3>
+<p>Ceci est la description du site.</p>
+
+            </section>
+        </div>
+        <div id="section_minitimeline" class="col spaced-section animated col-12 col-sm-4 color-2">
+            <section>
+                <section>
+    <h3>Employment</h3>
+    <div class="mini-timeline">
+        <ul>
+            <li class="mini-timeline-light">
+                02/2008 - 04/2010
+            </li>
+            <li class="mini-timeline-bold">
+                <a class="mini-timeline-point"></a>
+                one
+            </li>
+            <li>test 1</li>
+        </ul>
+        <ul>
+            <li class="mini-timeline-light">
+                02/2010 - 04/2012
+            </li>
+            <li class="mini-timeline-bold">
+                <a class="mini-timeline-point"></a>
+                test 2
+            </li>
+            <li>test 1</li>
+        </ul>
+    </div>
+</section>
+
+            </section>
+        </div>
+        <div id="section_status" class="col spaced-section animated col-12 col-sm-8 color-3">
+            <section>
+                <h3 id="status">Status</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            </section>
+        </div>
+        <div id="section_skills" class="col spaced-section animated col-12">
+            <section>
+                <h3 id="skills">Skills</h3>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+laborum.</p>
+
+            </section>
+        </div>
+    </div>
+</div>
+
+
+<script src="../static/home.js"></script>
+    
+
+</body>
+
+</html>

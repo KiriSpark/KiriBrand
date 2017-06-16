@@ -1,0 +1,18 @@
+/*
+override bootstrap row default margin
+*/
+
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+
+/* Middle to Wide Screen style
+
+Apply when screen size is equal or above 576px (bootstrap sm size) 
+media query css must be put after default style
+otherwise it cannot override default style
+*/
+
+@media screen and (min-width: 576px) {}
